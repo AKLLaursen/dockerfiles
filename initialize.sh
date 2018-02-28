@@ -7,8 +7,9 @@ sudo apt-get -y upgrade
 # Install latest long-lived branch Nvidia driver
 sudo apt-get install -y nvidia-384
 
-# Reboot machine
+# Reboot machine!!
 
+# Install build libraries such as C and Cpp compiler
 sudo apt-get install -y build-essential
 
 # Install libraries required for Docker
