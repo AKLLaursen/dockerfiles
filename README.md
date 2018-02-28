@@ -8,13 +8,13 @@ Below a short description of each Dockerfile hosted in the repository is given.
 
 ### `gpu_tensorflow_pytorch`
 
-Builts on [Nvidias official CUDA and CUDNN dockerfile](https://hub.docker.com/r/nvidia/cuda/) (Version 9.0). Provides basic unix libraries such as build-essentials, a Python runtime through [Miniconda](https://conda.io/miniconda.html) with the most general packages for machine learning.
+Builds on [NVidia's official CUDA and CUDNN dockerfile](https://hub.docker.com/r/nvidia/cuda/) (Version 9.0). Provides basic unix libraries such as build-essentials, a Python runtime through [Miniconda](https://conda.io/miniconda.html) with the most general packages for machine learning.
 
 For deep learning, [TensorFlow](https://www.tensorflow.org), [Keras](https://keras.io) and [PyTorch](http://pytorch.org) is provided.
 
-The Dockerfile provides [Jupyter](http://jupyter-notebook.readthedocs.io/en/stable/) as well, exposed through port `8888`. Note that Jupyter settings are copied from the `jupyter_notebook_config.py`, which must be available when building the Docker Image.
+The Dockerfile provides [Jupyter](http://jupyter-notebook.readthedocs.io/en/stable/) as well, exposed through port `8888`. Note that Jupyter settings are copied from the `jupyter_notebook_config.py` file, which must be available when building the docker image.
 
-The Dockerfile is build to use a GPU and as such it requires [`nvdia-docker`](https://github.com/NVIDIA/nvidia-docker). In initialize.sh commands to set up the bare minimum on a new machine in order to build and run the image is provided. **Remember to reboot you machine after installing the NVidia driver!**
+The Dockerfile is build to use a GPU(s) and as such it requires [`nvdia-docker`](https://github.com/NVIDIA/nvidia-docker). In initialize.sh commands to set up the bare minimum on a new machine in order to build and run the image is provided. **Remember to reboot your machine after installing the NVidia driver!**
 
 Before building the image, make sure to correct the arguments in the start of the Dockerfile such as Python version and username.
 
@@ -30,7 +30,7 @@ Run the docker image using eg.
 docker run --runtime=nvidia -v /home/anlaursen/projects:/home/anlaursen/projects -d --rm -p 8888:8888 deeplearning:latest
 ```
 
-Jupyter will then be accessible from the IP of the given machine using port 8888 - remember to open that port.
+Jupyter will then be accessible from the IP or DNS of the given machine using port 8888 - remember to open that port.
 
 ### `super_resolution`
 
@@ -50,4 +50,4 @@ sudo gpasswd -a $USER docker
 
 ## Contributers
 
-Andreas <anlaursen@deloitte.dk>
+Andreas, <anlaursen@deloitte.dk>
