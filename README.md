@@ -6,7 +6,7 @@ This repository is aimed at sharing useful [Dockerfiles](https://docs.docker.com
 
 Below a short description of each Dockerfile hosted in the repository is given.
 
-**`gpu_tensorflow_pytorch`**
+### `gpu_tensorflow_pytorch`
 
 Builts on [Nvidias official CUDA and CUDNN dockerfile](https://hub.docker.com/r/nvidia/cuda/) (Version 9.0). Provides basic unix libraries such as build-essentials, a Python runtime through [Miniconda](https://conda.io/miniconda.html) with the most general packages for machine learning.
 
@@ -32,7 +32,7 @@ docker run --runtime=nvidia -v /home/anlaursen/projects:/home/anlaursen/projects
 
 Jupyter will then be accessible from the IP of the given machine using port 8888 - remember to open that port.
 
-**`super_resolution`**
+### `super_resolution`
 
 Extends `gpu_tensorflow_pytorch` with the alpha version of [Tesseract 4.0 Alpha](https://github.com/tesseract-ocr/tesseract/wiki/4.0-with-LSTM) (utilizing LSTMs for the character recognition), Microsoft fonts, Pytesseract and the Google Cloud Storage Python API.
 
