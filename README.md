@@ -40,7 +40,7 @@ Extends `gpu_tensorflow_pytorch` with the alpha version of [Tesseract 4.0 Alpha]
 
 In order to avoid using `sudo` to run docker commands, you can add a given user to the docker group as described below.
 
-````
+```
 # Add the docker group if it doesn't already exist:
 sudo groupadd docker
 
