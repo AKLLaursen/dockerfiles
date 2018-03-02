@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
+FROM ubuntu:16.04
 
 LABEL maintainer "Andreas Keller Leth Laursen <anlaursen@deloitte.dk>"
 
@@ -58,7 +58,7 @@ RUN conda install -y --quiet jupyter \
 
 # Install tensorflow and Keras
 RUN pip install --upgrade pip
-RUN pip install --upgrade tensorflow-gpu \
+RUN pip install --upgrade tensorflow \
   keras
 
 # Install various ML libraries
@@ -67,9 +67,8 @@ RUN pip install --upgrade nltk \
   tqdm
 
 # Install PyTorch
-RUN conda install -y --quiet pytorch \
-  torchvision \
-  cuda90 -c pytorch
+RUN conda install -y --quiet pytorch-cpu \
+  torchvision -c pytorch
 
 # Install additional libraries
 RUN conda install -y --quiet h5py \
