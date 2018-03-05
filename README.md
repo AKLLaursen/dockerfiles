@@ -32,6 +32,10 @@ docker run --runtime=nvidia -v /home/anlaursen/projects:/home/anlaursen/projects
 
 Jupyter will then be accessible from the IP or DNS of the given machine using port 8888 - remember to open that port.
 
+### `cpu_tensorflow_pytorch`
+
+Same as `gpu_tensorflow_pytorch`, but created for usage on the CPU rather than the GPU. As such, the image extends the official Ubuntu 16.04 image and utilizes the CPU version of TensorFlow and PyTorch respectively.
+
 ### `super_resolution`
 
 Extends `gpu_tensorflow_pytorch` with the alpha version of [Tesseract 4.0 Alpha](https://github.com/tesseract-ocr/tesseract/wiki/4.0-with-LSTM) (utilizing LSTMs for the character recognition), Microsoft fonts, Pytesseract and the Google Cloud Storage Python API.
