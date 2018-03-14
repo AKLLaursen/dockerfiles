@@ -56,14 +56,19 @@ RUN conda install -y --quiet jupyter \
   pillow \
   scikit-image
 
+# Install Jupyterlab
+#RUN conda install -y --quiet jupyterlab -c conda-forge
+RUN pip install --upgrade jupyterlab
+
 # Install tensorflow and Keras
 RUN pip install --upgrade pip
 RUN pip install --upgrade tensorflow \
   keras
 
-# Install various ML libraries
+# Install various NLP libraries and progressbar
 RUN pip install --upgrade nltk \
   gensim \
+  spacy \
   tqdm
 
 # Install PyTorch
@@ -101,4 +106,7 @@ RUN jupyter contrib nbextension install --user && \
 EXPOSE 8888
 
 # Run jupyter notebook
-CMD jupyter notebook
+# CMD jupyter notebook
+
+# Run jupyter lab
+CMD jupyter lab

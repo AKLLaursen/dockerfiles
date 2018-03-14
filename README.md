@@ -12,7 +12,20 @@ Builds on [NVidia's official CUDA and CUDNN dockerfile](https://hub.docker.com/r
 
 For deep learning, [TensorFlow](https://www.tensorflow.org), [Keras](https://keras.io) and [PyTorch](http://pytorch.org) is provided.
 
-The Dockerfile provides [Jupyter](http://jupyter-notebook.readthedocs.io/en/stable/) as well, exposed through port `8888`. Note that Jupyter settings are copied from the `jupyter_notebook_config.py` file, which must be available when building the docker image.
+The Dockerfile provides [Jupyter](http://jupyter-notebook.readthedocs.io/en/stable/)  or [Jupyter Lab](http://jupyterlab.readthedocs.io) as well, exposed through port `8888`. Note that Jupyter settings are copied from the `jupyter_notebook_config.py` file, which must be available when building the docker image. The default password for Jupyter is *deloitte*. You should propably change that, by changing the sha1 hashed password in the `jupyter_notebook_config.py` file under `c.NotebookApp.password`. Generate a new hashed password by running:
+
+```python
+from notebook.auth import passwd
+passwd()
+````
+
+Yielding the console output:
+
+````
+Enter password:
+Verify password:
+Out[2]: 'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'
+```
 
 The Dockerfile is build to use a GPU(s) and as such it requires [`nvdia-docker`](https://github.com/NVIDIA/nvidia-docker). In initialize.sh commands to set up the bare minimum on a new machine in order to build and run the image is provided. **Remember to reboot your machine after installing the NVidia driver!**
 
