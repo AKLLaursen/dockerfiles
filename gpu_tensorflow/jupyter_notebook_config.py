@@ -19,4 +19,5 @@ c.NotebookApp.open_browser = False
 c.NotebookApp.password = 'sha1:e8eb003db720:b25aa1c872be1c081b3b1d010abc2e6e240c2033'
 
 ## The port the notebook server will listen on.
-c.NotebookApp.port = 8889
+c.NotebookApp.port = 8888
+

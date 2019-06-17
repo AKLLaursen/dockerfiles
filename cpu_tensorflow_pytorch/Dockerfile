@@ -9,7 +9,8 @@ ARG USERNAME=anlaursen
 ARG USERID=42
 
 # Install basic libraries
-RUN apt-get update
+RUN apt-get update && \
+  apt-get upgrade -y
 RUN apt-get install -y build-essential \
   git \
   wget \
@@ -103,7 +104,7 @@ RUN jupyter contrib nbextension install --user && \
   jupyter nbextension enable collapsible_headings/main
 
 # Expose the Jupyter port
-EXPOSE 8888
+EXPOSE 8999
 
 # Run jupyter notebook
 # CMD jupyter notebook

@@ -9,13 +9,23 @@ ARG USERNAME=anlaursen
 ARG USERID=42
 
 # Install basic libraries
-RUN apt-get update
-RUN apt-get install -y build-essential \
+RUN apt-get update && \
+  apt-get upgrade -y
+RUN apt-get install --allow-downgrades --allow-change-held-packages -y build-essential \
   git \
   wget \
   unzip \
   sudo \
-  ca-certificates
+  ca-certificates \
+  cuda-command-line-tools-9-0 \
+  cuda-cublas-9-0 \
+  cuda-cufft-9-0 \
+  cuda-cudart-dev-9-0 \  
+  cuda-curand-9-0 \
+  cuda-cusolver-9-0 \
+  cuda-cusparse-9-0 \
+  libcudnn7=7.1.4.18-1+cuda9.0 \
+  libcudnn7-dev=7.1.4.18-1+cuda9.0
 
 RUN apt-get clean && \
   rm -rf /var/lib/apt/lists/*
@@ -48,7 +58,7 @@ COPY jupyter_notebook_config.py .jupyter/
 RUN conda install -y --quiet python=$PYTHON_VERSION
 RUN conda install -y --quiet jupyter \
   ipywidgets \
-  numpy \
+  numpy \ 
   scikit-learn \
   matplotlib \
   pandas \
@@ -56,12 +66,12 @@ RUN conda install -y --quiet jupyter \
   pillow \
   scikit-image
 
-# Install Jupyterlab
-#RUN conda install -y --quiet jupyterlab -c conda-forge
-RUN pip install --upgrade jupyterlab
+RUN conda install -y --quiet -c conda-forge jupyterlab
+
+# Upgrade pip
+RUN pip install --upgrade pip
 
 # Install tensorflow and Keras
-RUN pip install --upgrade pip
 RUN pip install --upgrade tensorflow-gpu \
   keras
 
@@ -103,10 +113,8 @@ RUN jupyter contrib nbextension install --user && \
   jupyter nbextension enable collapsible_headings/main
 
 # Expose the Jupyter port
-EXPOSE 8888
-
-# Run jupyter notebook
-# CMD jupyter notebook
+EXPOSE 8889
+EXPOSE 6607
 
 # Run jupyter lab
 CMD jupyter lab
